@@ -7,11 +7,11 @@ COMPANY_NAME = "Tesla Inc"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
-STOCK_API_KEY = "BGSC3YARKZ9EZY26"
-NEWS_API_KEY = "768b32bc341e4725a0d9add7d8a811a1"
+STOCK_API_KEY = "api key from stock"
+NEWS_API_KEY = "api key from news"
 
-TWILIO_SID = "AC1f8ae4df7a706685d9211e91744eb6d9"
-TWILIO_AUTH_TOKEN = "729096d8613b7f0803143d2da0ebaf84"
+TWILIO_SID = "twilio sid"
+TWILIO_AUTH_TOKEN = "auth token"
 
 stocks_params = {
     "function": "TIME_SERIES_DAILY",
@@ -37,7 +37,7 @@ prev_day_closing_stocks = float(stock_data["Time Series (Daily)"]["2024-04-19"][
 
 diff = round(yesterday_closing_stocks - prev_day_closing_stocks, 3)
 change = None
-if diff > 0:
+if diff > 5:
     change = "🔺"
 else:
     change = "🔻"
@@ -54,9 +54,7 @@ if abs(percentage) > 1:
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
     for article in formatted_articles:
         message = client.messages.create(
-                from_="+12512374542",
+                from_="twilio number",
                 body=article,
-                to="+355692074793"
+                to="your number"
             )
-
-
